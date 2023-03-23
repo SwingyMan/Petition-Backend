@@ -25,7 +25,7 @@ jobs:
       uses: docker/build-push-action@v4
       with:
           push: true
-          tags: swingyman/petition-backend:latest
+          tags: ghcr.io/swingyman/petition-backend:latest
           context: .
           secrets: |
             GIT_AUTH_TOKEN=${{ secrets.TOKEN }}
