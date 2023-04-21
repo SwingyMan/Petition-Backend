@@ -1,6 +1,6 @@
 ﻿namespace WebApplication1.Models
 {
-    public class PetitionModel
+    public class Comment
     {
     }
 }

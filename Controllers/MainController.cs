@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
@@ -7,11 +7,35 @@ namespace WebApplication1.Controllers
     [Route("/")]
     public class MainController : ControllerBase
     {
-        // GET: MainController
-        [HttpGet]
-        public IActionResult Index()
+        private readonly MainContext _mainContext; 
+        public MainController(MainContext mainContext)
         {
-            return Ok("It's working");
+            _mainContext = mainContext;
+        }
+
+        [HttpGet("/account/{id}")]
+        public IActionResult ReadUser(int id)
+        {
+            var user = _mainContext.Users.FirstOrDefault(x => x.Id == id);
+            if (user == null) { return NotFound(); }
+            return Ok(user);
+        }
+        [HttpPost("/account/add")]
+        public IActionResult addUser([FromBody]UserDTO userDTO)
+        {
+            User user = new User(userDTO.Name, userDTO.Email, userDTO.Password, HttpContext.Request.Host.ToString());
+            _mainContext.Users.Add(user);
+            _mainContext.SaveChanges();
+            return Ok(user);
+        }
+        [HttpPut("/account/edit")]
+        public IActionResult editUser()
+        {
+            return Ok();
+        }
+        [HttpDelete("/account/delete/{id}")]
+        public IActionResult deleteUser() { 
+            return Ok();
         }
     }
 }
