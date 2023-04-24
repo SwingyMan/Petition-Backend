@@ -12,6 +12,9 @@ namespace WebApplication1.Models
         public DateTime date_of_registration { get; set; }
         public string Role { get; set; }
         public string ip_of_registry { get; set; }
+        public List<Sketch> sketch { get; set; }
+        public List<Comment> comments { get; set; }
+        public List<Supports> supports { get; set; }
         public User(string name,string email,string password,string ip_of_registry)
         {
             this.Name = name;

@@ -23,6 +23,7 @@ namespace WebApplication1.Controllers
         [HttpPost("/account/add")]
         public IActionResult addUser([FromBody]UserDTO userDTO)
         {
+            if(ModelState.IsValid) { return BadRequest(); }
             User user = new User(userDTO.Name, userDTO.Email, userDTO.Password, HttpContext.Request.Host.ToString());
             _mainContext.Users.Add(user);
             _mainContext.SaveChanges();
