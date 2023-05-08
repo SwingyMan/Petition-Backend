@@ -1,21 +1,22 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebApplication1.Interfaces;
-using WebApplication1.Models;
+using PetitionBackend.Interfaces;
+using PetitionBackend.Models;
 
-namespace WebApplication1.Repositories
+namespace PetitionBackend.Repositories
 {
     public class CrudRepository<T> : ICrudRepository<T> where T : class
     {
         private MainContext _mainContext = null;
         private DbSet<T> table = null;
-        public CrudRepository() {
+        public CrudRepository()
+        {
             _mainContext = new MainContext();
             table = _mainContext.Set<T>();
         }
         public async Task<T> add(T entity)
         {
             table.Add(entity);
-           await _mainContext.SaveChangesAsync();
+            await _mainContext.SaveChangesAsync();
             return entity;
         }
 
@@ -37,9 +38,9 @@ namespace WebApplication1.Repositories
             return null;
         }
 
-        public async Task<List<T>> getAll()
+        public async Task<List<T>> getAll(int page)
         {
-            return await table.ToListAsync();
+            return await table.Skip(page*10).Take(10).ToListAsync();
         }
 
         public async Task<T> getById(int id)

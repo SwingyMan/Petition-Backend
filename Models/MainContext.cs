@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
-namespace WebApplication1.Models
+namespace PetitionBackend.Models
 {
     public class MainContext : DbContext
     {
@@ -16,7 +16,11 @@ namespace WebApplication1.Models
         public DbSet<Sketch> sketches { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=petition.postgres.database.azure.com;Username=petition;Password=VTEX8K8HV6t3egT;Database=petition");
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+.SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+.AddJsonFile("appsettings.json")
+.Build();
+            optionsBuilder.UseNpgsql(configuration.GetConnectionString("PetitionDatabase"));
         }
     }
 }

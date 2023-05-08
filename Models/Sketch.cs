@@ -1,4 +1,4 @@
-﻿namespace WebApplication1.Models
+﻿namespace PetitionBackend.Models
 {
     public class Sketch
     {
@@ -6,7 +6,7 @@
         public string Title { get; set; }
         public string Description { get; set; }
         public string Category { get; set; }
-        public DateTime DateOfCreation { get; set;}
+        public DateTime DateOfCreation { get; set; }
         public List<Comment> Comments { get; set; }
         public Documentation Documentation { get; set; }
         public User User { get; set; }

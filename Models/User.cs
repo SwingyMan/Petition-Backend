@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebApplication1.Models
+namespace PetitionBackend.Models
 {
     public class User
     {
@@ -15,11 +15,11 @@ namespace WebApplication1.Models
         public List<Sketch> sketch { get; set; }
         public List<Comment> comments { get; set; }
         public List<Supports> supports { get; set; }
-        public User(string name,string email,string password,string ip_of_registry)
+        public User(string name, string email, string password, string ip_of_registry)
         {
-            this.Name = name;
-            this.Email = email;
-            this.Password = password;
+            Name = name;
+            Email = email;
+            Password = password;
             date_of_registration = DateTime.Now;
             Role = "User";
             this.ip_of_registry = ip_of_registry;

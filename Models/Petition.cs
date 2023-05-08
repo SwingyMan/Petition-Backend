@@ -1,4 +1,4 @@
-﻿namespace WebApplication1.Models
+﻿namespace PetitionBackend.Models
 {
     public class Petition
     {
