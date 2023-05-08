@@ -6,16 +6,16 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["Petition-Backend.csproj", "."]
-RUN dotnet restore "./Petition-Backend.csproj"
+COPY ["PetitionBackend.csproj", "."]
+RUN dotnet restore "./PetitionBackend.csproj"
 COPY . .
 WORKDIR "/src/."
-RUN dotnet build "Petition-Backend.csproj" -c Release -o /app/build
+RUN dotnet build "PetitionBackend.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Petition-Backend.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "PetitionBackend.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Petition-Backend.dll"]
+ENTRYPOINT ["dotnet", "PetitionBackend.dll"]
