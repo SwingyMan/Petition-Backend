@@ -39,7 +39,8 @@ namespace PetitionBackend.Controllers
         [HttpDelete("/account/delete/{id}")]
         public async Task<IActionResult> deleteUser(int id)
         {
-            return Ok(await _userService.DeleteById(id));
+            await _userService.DeleteById(id);
+            return Ok();
         }
     }
 }
