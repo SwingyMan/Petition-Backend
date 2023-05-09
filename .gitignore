@@ -363,3 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 /appsettings.json
 /log.txt
+/PetitionBackend/log.txt
+/PetitionBackend/LICENSE.txt
