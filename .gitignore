@@ -365,3 +365,4 @@ FodyWeavers.xsd
 /log.txt
 /PetitionBackend/log.txt
 /PetitionBackend/LICENSE.txt
+/PetitionBackend/appsettings.json
