@@ -2,7 +2,7 @@
 
 namespace PetitionBackend.Interfaces
 {
-    public interface IUserRepository
+    public interface IUserRepository : ICrudRepository<User>
     {
         public Task<User> FindByEmailAndPassword(string email, string password);
         public Task<User> FindByEmail(string email);

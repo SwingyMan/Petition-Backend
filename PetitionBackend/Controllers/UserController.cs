@@ -6,7 +6,7 @@ using PetitionBackend.Services;
 namespace PetitionBackend.Controllers
 {
     [ApiController]
-    [Route("/")]
+    [Route("/api/account/")]
     public class UserController : ControllerBase
     {
         private readonly MainContext _mainContext;
@@ -14,29 +14,30 @@ namespace PetitionBackend.Controllers
         public UserController(MainContext mainContext)
         {
             _mainContext = mainContext;
-            _userService = new UserService(mainContext);
+            _userService = new UserService(_mainContext);
         }
-        [HttpPost("/account/login")]
+        [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody]Login login)
         {
+        if (login == null) { return BadRequest(); }
             return Ok(await _userService.Login(login));
         }
-        [HttpGet("/account/{id}")]
+        [HttpGet("user/{id}")]
         public async Task<IActionResult> ReadUser(int id)
         {
             return Ok(await _userService.GetById(id));
         }
-        [HttpPost("/account/add")]
+        [HttpPost("register")]
         public async Task<IActionResult> addUser([FromBody] Register userDTO)
         {
             return Ok(await _userService.Register(userDTO, HttpContext.Request.Host.ToString()));
         }
-        [HttpPut("/account/edit")]
-        public IActionResult editUser()
+        [HttpPut("edit/{id}")]
+        public IActionResult editUser(int id)
         {
             return Ok();
         }
-        [HttpDelete("/account/delete/{id}")]
+        [HttpDelete("delete/{id}")]
         public async Task<IActionResult> deleteUser(int id)
         {
             await _userService.DeleteById(id);

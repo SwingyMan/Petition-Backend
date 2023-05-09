@@ -13,7 +13,7 @@ namespace PetitionBackend.Models
         public DbSet<Supports> Supports { get; set; }
         public DbSet<toWho> ToWho { get; set; }
         public DbSet<Recipient> Recipients { get; set; }
-        public DbSet<Sketch> sketches { get; set; }
+        public DbSet<Sketch> Sketches { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             IConfigurationRoot configuration = new ConfigurationBuilder()
