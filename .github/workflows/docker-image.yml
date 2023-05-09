@@ -26,6 +26,6 @@ jobs:
       with:
           push: true
           tags: ghcr.io/swingyman/petition-backend:latest
-          context: .
+          context: ./PetitionBackend/.
           secrets: |
             GIT_AUTH_TOKEN=${{ secrets.TOKEN }}
