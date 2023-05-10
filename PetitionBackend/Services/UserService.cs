@@ -7,11 +7,9 @@ namespace PetitionBackend.Services
 {
     public class UserService : IUserService
     {
-        private readonly UserRepository _userRepository;
-        private readonly MainContext _mainContext;
-        public UserService(MainContext mainContext) { 
-        _mainContext = mainContext;
-            _userRepository = new UserRepository(_mainContext);
+        private readonly IUserRepository _userRepository;
+        public UserService(IUserRepository userRepository) {
+            _userRepository = userRepository;
         }
 
         public async Task DeleteById(int id)

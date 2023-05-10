@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetitionBackend.DTOs;
 using PetitionBackend.Models;
+using PetitionBackend.Repositories;
 using PetitionBackend.Services;
 
 namespace PetitionBackend.Controllers
@@ -11,10 +12,12 @@ namespace PetitionBackend.Controllers
     {
         private readonly MainContext _mainContext;
         private readonly UserService _userService;
+        private readonly UserRepository _userRepository;
         public UserController(MainContext mainContext)
         {
             _mainContext = mainContext;
-            _userService = new UserService(_mainContext);
+            _userRepository = new UserRepository(_mainContext);
+            _userService = new UserService(_userRepository);
         }
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody]Login login)
