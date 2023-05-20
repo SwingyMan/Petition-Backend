@@ -1,4 +1,6 @@
-﻿namespace PetitionBackend.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace PetitionBackend.Models
 {
     public class Comment
     {
