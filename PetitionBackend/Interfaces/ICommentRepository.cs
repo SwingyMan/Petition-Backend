@@ -4,5 +4,8 @@ namespace PetitionBackend.Interfaces
 {
     public interface ICommentRepository : ICrudRepository<Comment>
     {
+
+
+
     }
 }
