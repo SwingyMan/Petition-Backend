@@ -18,11 +18,11 @@ namespace PetitionBackend.Models
         public Sketch (string Title, string Description, string Category, Documentation Documentation)
 
         {
-
-
-
-
-
+            this.Title = Title;
+            this.Description = Description; 
+            this.Category = Category;   
+            this.Documentation = Documentation;
+            DateOfCreation= DateTime.Now;
 
         }
 
